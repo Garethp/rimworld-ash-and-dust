@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>Defs/PreceptDef[defName = "Funeral"]/conflictingMemes</xpath>
+                <success>Invert</success>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/PreceptDef[defName = "Funeral"]</xpath>
+                <value>
+                    <conflictingMemes />
+                </value>
+            </li>
+        </operations>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PreceptDef[defName = "Funeral"]/conflictingMemes</xpath>
+        <value>
+            <li>TreeConnection</li>
+            <li>NaturePrimacy</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>Defs/PreceptDef[defName = "Funeral"]/exclusionTags</xpath>
+                <success>Invert</success>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/PreceptDef[defName = "Funeral"]</xpath>
+                <value>
+                    <exclusionTags />
+                </value>
+            </li>
+        </operations>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PreceptDef[defName = "Funeral"]/exclusionTags</xpath>
+        <value>
+            <li>VanillaBurial</li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>Defs/MemeDef[defName = "NaturePrimacy" or defName = "TreeConnection"]/addDesignators</xpath>
+                <success>Invert</success>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/MemeDef[defName = "NaturePrimacy" or defName = "TreeConnection"]</xpath>
+                <value>
+                    <addDesignators />
+                </value>
+            </li>
+        </operations>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/MemeDef[defName = "NaturePrimacy" or defName = "TreeConnection"]/addDesignators</xpath> <!--Priority is important here, hence the insert after this specific subNode-->
+        <value>
+            <li>Building_TreeGrave</li>
+        </value>
+    </Operation>
+</Patch>

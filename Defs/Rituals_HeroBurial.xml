@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <PreceptDef ParentName="FuneralBase">
+        <defName>HeroFuneral</defName>
+        <description>A gathering that occurs around a natural grave for the body of a dead to return them back to the cycle of life, allowing their spirits to return in the form of trees. No ceremony can be held if the body is destroyed.</description>
+        <label>Hero's Funeral</label>
+        <extraTextPawnDeathLetter>{PAWN_nameDef} should be returned to the earth so that they can become one with nature.</extraTextPawnDeathLetter>
+        <ritualPatternBase>HeroFuneral</ritualPatternBase>
+        <iconPath>UI/Icons/Rituals/TreeBurial</iconPath>
+        <exclusionTags>
+            <li>NoHeroBurial</li>
+        </exclusionTags>
+    </PreceptDef>
+
+    <RitualPatternDef>
+        <defName>HeroFuneral</defName>
+        <nameMaker>NamerRitualFuneral</nameMaker>
+        <ritualExpectedDesc>Once a {IDEO} member dies, other {MEMBERS} gather around their grave for {RITUAL_labelDef}.</ritualExpectedDesc>
+        <ritualExpectedPostfix>{0} {1} want to carry out the funeral as soon as possible.</ritualExpectedPostfix>
+        <ritualObligationTriggers>
+            <li Class="RitualObligationTrigger_MemberDiedProperties">
+                <mustBePlayerIdeo>false</mustBePlayerIdeo>
+            </li>
+        </ritualObligationTriggers>
+        <ritualObligationTargetFilter>HeroicGraveWithTargetsCorpse</ritualObligationTargetFilter>
+        <ritualBehavior>Funeral</ritualBehavior>
+        <ritualOutcomeEffect>AttendedFuneral</ritualOutcomeEffect>
+    </RitualPatternDef>
+
+    <RitualObligationTargetFilterDef>
+        <defName>HeroicGraveWithTargetsCorpse</defName>
+        <workerClass>AshAndDust.Rituals.RitualTargetFilter_HeroBurial</workerClass>
+    </RitualObligationTargetFilterDef>
+</Defs>
