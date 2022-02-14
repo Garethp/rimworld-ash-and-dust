@@ -6,7 +6,7 @@
         <label>Pirate's Funeral</label>
         <extraTextPawnDeathLetter>We should celebrate {PAWN_nameDef}'s life as we send them to the sea.</extraTextPawnDeathLetter>
         <ritualPatternBase>PirateFuneral</ritualPatternBase>
-        <iconPath>UI/Icons/Rituals/TreeBurial</iconPath>
+        <iconPath>UI/Icons/Rituals/PirateBurial</iconPath>
         <exclusionTags>
             <li>NoPirateBurial</li>
         </exclusionTags>

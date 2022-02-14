@@ -3,21 +3,21 @@
     <IssueDef>
         <defName>PirateBurial</defName>
         <label>Pirate Burial</label>
-        <iconPath>UI/Icons/Issues/TreeBurial</iconPath>
+        <iconPath>UI/Icons/Issues/PirateBurial</iconPath>
     </IssueDef>
 
-    <PreceptDef>
-        <defName>PirateBurial_Required</defName>
-        <issue>PirateBurial</issue>
-        <impact>High</impact>
-        <displayOrderInIssue>3</displayOrderInIssue>
-        <displayOrderInImpact>100</displayOrderInImpact>
-        <label>For enemies as well</label>
-        <description>Our enemies are a tough bunch and they should be honoured by sending them to the depths</description>
-        <exclusionTags>
-            <li>VanillaBurial</li>
-        </exclusionTags>
-    </PreceptDef>
+<!--    <PreceptDef>-->
+<!--        <defName>PirateBurial_Required</defName>-->
+<!--        <issue>PirateBurial</issue>-->
+<!--        <impact>High</impact>-->
+<!--        <displayOrderInIssue>3</displayOrderInIssue>-->
+<!--        <displayOrderInImpact>100</displayOrderInImpact>-->
+<!--        <label>For enemies as well</label>-->
+<!--        <description>Our enemies are a tough bunch and they should be honoured by sending them to the depths</description>-->
+<!--        <exclusionTags>-->
+<!--            <li>VanillaBurial</li>-->
+<!--        </exclusionTags>-->
+<!--    </PreceptDef>-->
 
     <PreceptDef>
         <defName>PirateBurial_Sometimes</defName>

@@ -13,10 +13,8 @@ namespace AshAndDust.HarmonyPatches
         {
             if (pawn?.RaceProps?.Humanlike != true) return;
             if (pawn.Faction == Faction.OfPlayer) return;
-            if (pawn.Corpse?.Map?.ParentFaction?.IsPlayer != false) return;
+            if (pawn.Corpse?.Map?.ParentFaction?.IsPlayer is null or false) return;
             
-            Log.Message(pawn.Corpse.Map.ParentFaction.Name);
-
             var ideos = Faction.OfPlayer.ideos.AllIdeos.ToList();
             foreach (var ideo in ideos)
             {
@@ -52,9 +50,7 @@ namespace AshAndDust.HarmonyPatches
             if (deadPawn == null) return true;
 
             var mapPawns = __instance.Map.mapPawns;
-
-            Log.Message(deadPawn.Faction.Name);
-
+            
             mapPawns.AllPawns.ForEach(mapPawn =>
             {
                 if (mapPawn.Ideo == null) return;

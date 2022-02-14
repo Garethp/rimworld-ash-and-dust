@@ -113,11 +113,8 @@ namespace AshAndDust.Plants
                             break;
                     }
 
-                    Log.Message("Learning at " + skillWeighting);
                     pawn.skills.Learn(skill.def, 0.018f * skillWeighting);
                 });
-
-            Log.Message(this.innerContainer.ToString());
         }
 
         public bool CanUse(Pawn pawn)

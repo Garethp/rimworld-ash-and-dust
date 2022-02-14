@@ -7,7 +7,6 @@ namespace AshAndDust.Precepts
     {
         public override void Notify_MemberCorpseDestroyed(Pawn p)
         {
-            Log.Message("Member corpse destroyed");
         }
     }
 }

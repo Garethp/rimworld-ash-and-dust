@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <IssueDef>
-        <defName>HeroBurial</defName>
-        <label>Hero Burial</label>
-        <iconPath>UI/Icons/Issues/TreeBurial</iconPath>
-    </IssueDef>
+<!--    <IssueDef>-->
+<!--        <defName>HeroBurial</defName>-->
+<!--        <label>Hero Burial</label>-->
+<!--        <iconPath>UI/Icons/Issues/TreeBurial</iconPath>-->
+<!--    </IssueDef>-->
 
 <!--    <PreceptDef>-->
 <!--        <defName>HeroBurial_Required</defName>-->
@@ -32,17 +32,17 @@
 <!--        </exclusionTags>-->
 <!--    </PreceptDef>-->
 
-    <PreceptDef>
-        <defName>HeroBurial_None</defName>
-        <issue>HeroBurial</issue>
-        <impact>Low</impact>
-        <displayOrderInIssue>0</displayOrderInIssue>
-        <displayOrderInImpact>100</displayOrderInImpact>
-        <defaultSelectionWeight>1</defaultSelectionWeight>
-        <label>None</label>
-        <description>Hero Burial None.</description>
-        <exclusionTags>
-            <li>NoHeroBurial</li>
-        </exclusionTags>
-    </PreceptDef>
+<!--    <PreceptDef>-->
+<!--        <defName>HeroBurial_None</defName>-->
+<!--        <issue>HeroBurial</issue>-->
+<!--        <impact>Low</impact>-->
+<!--        <displayOrderInIssue>0</displayOrderInIssue>-->
+<!--        <displayOrderInImpact>100</displayOrderInImpact>-->
+<!--        <defaultSelectionWeight>1</defaultSelectionWeight>-->
+<!--        <label>None</label>-->
+<!--        <description>Hero Burial None.</description>-->
+<!--        <exclusionTags>-->
+<!--            <li>NoHeroBurial</li>-->
+<!--        </exclusionTags>-->
+<!--    </PreceptDef>-->
 </Defs>

@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <PreceptDef ParentName="FuneralBase">
-        <defName>HeroFuneral</defName>
-        <description>A gathering that occurs around a natural grave for the body of a dead to return them back to the cycle of life, allowing their spirits to return in the form of trees. No ceremony can be held if the body is destroyed.</description>
-        <label>Hero's Funeral</label>
-        <extraTextPawnDeathLetter>{PAWN_nameDef} should be returned to the earth so that they can become one with nature.</extraTextPawnDeathLetter>
-        <ritualPatternBase>HeroFuneral</ritualPatternBase>
-        <iconPath>UI/Icons/Rituals/TreeBurial</iconPath>
-        <exclusionTags>
-            <li>NoHeroBurial</li>
-        </exclusionTags>
-    </PreceptDef>
+<!--    <PreceptDef ParentName="FuneralBase">-->
+<!--        <defName>HeroFuneral</defName>-->
+<!--        <description>A gathering that occurs around a natural grave for the body of a dead to return them back to the cycle of life, allowing their spirits to return in the form of trees. No ceremony can be held if the body is destroyed.</description>-->
+<!--        <label>Hero's Funeral</label>-->
+<!--        <extraTextPawnDeathLetter>{PAWN_nameDef} should be returned to the earth so that they can become one with nature.</extraTextPawnDeathLetter>-->
+<!--        <ritualPatternBase>HeroFuneral</ritualPatternBase>-->
+<!--        <iconPath>UI/Icons/Rituals/TreeBurial</iconPath>-->
+<!--        <exclusionTags>-->
+<!--            <li>NoHeroBurial</li>-->
+<!--        </exclusionTags>-->
+<!--    </PreceptDef>-->
 
     <RitualPatternDef>
         <defName>HeroFuneral</defName>

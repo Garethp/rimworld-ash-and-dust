@@ -7,7 +7,6 @@ namespace AshAndDust.Precepts
     {
         public void Notify_NonMemberCorpseDestroyed(Pawn pawn)
         {
-            Log.Message("Non member corpse destroyed");
         }
     }
 }
