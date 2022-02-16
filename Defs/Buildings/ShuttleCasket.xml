@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <ThingDef ParentName="BuildingBase">
+    <ThingDef ParentName="BuildingBase" MayRequire="kentington.saveourship2">
         <defName>ShuttleCasket</defName>
         <label>Shuttle Casket</label>
         <description>A place to put the dead and send them into the vastness of the ocean.</description>
@@ -87,7 +87,7 @@
         <designationHotKey>Misc9</designationHotKey>
     </ThingDef>
 
-    <ThingDef ParentName="SkyfallerBase">
+    <ThingDef ParentName="SkyfallerBase" MayRequire="kentington.saveourship2">
         <defName>ShuttleCasketSkyfaller</defName>
         <label>shuttle casket (leaving)</label>
         <thingClass>DropPodIncoming</thingClass>

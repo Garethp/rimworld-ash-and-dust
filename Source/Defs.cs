@@ -7,7 +7,6 @@ namespace AshAndDust
     public class Defs
     {
         public static ThingDef WateryGrave;
-        public static ThingDef ShuttleCasket;
         public static ThingDef AshAndDust_Plants_AncestorTree;
         
         public static PreceptDef TreeBurial_None;
@@ -17,7 +16,5 @@ namespace AshAndDust
         
         public static ThoughtDef TreeBurial_EnemyCorpseDestroyed;
         public static ThoughtDef TreeBurial_ColonistCorpseDestroyed;
-
-        public static ThingDef ShuttleCasketSkyfaller;
     }
 }

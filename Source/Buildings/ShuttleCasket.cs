@@ -7,7 +7,7 @@ namespace AshAndDust.Buildings
     {
         private void Launch()
         {
-            var newThing = SkyfallerMaker.MakeSkyfaller(Defs.ShuttleCasketSkyfaller);
+            var newThing = SkyfallerMaker.MakeSkyfaller(DefDatabase<ThingDef>.GetNamed("ShuttleCasketSkyfaller"));
             GenSpawn.Spawn(newThing, Position, Map);
             
             Destroy();
