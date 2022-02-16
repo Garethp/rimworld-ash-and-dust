@@ -53,6 +53,7 @@
     <ItemGroup>
         <Compile Include="AshAndDust.cs" />
         <Compile Include="Buildings\Building_TreeGrave.cs" />
+        <Compile Include="Buildings\ShuttleCasket.cs" />
         <Compile Include="Defs.cs" />
         <Compile Include="HarmonyPatches\PatchJobDriver_Meditate.cs" />
         <Compile Include="HarmonyPatches\Patch_CompMeditationFocus.cs" />

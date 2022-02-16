@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using AshAndDust.Buildings;
+using RimWorld;
 using Verse;
 
 namespace AshAndDust.Rituals
@@ -16,10 +17,20 @@ namespace AshAndDust.Rituals
         protected override RitualTargetUseReport CanUseTargetInternal(TargetInfo target, RitualObligation obligation)
         {
             if (!target.HasThing) return false;
-            if (target.Thing is not Building_Sarcophagus grave) return false;
-            if (grave.Corpse != null) return false;
 
-            return target.Cell.GetTerrain(target.Map).IsWater;
+            if (target.Thing is ShuttleCasket shuttleCasket)
+            {
+                if (shuttleCasket.Corpse != null) return false;
+                return shuttleCasket.GetComp<CompRefuelable>().IsFull;
+            }
+            
+            if (target.Thing is Building_Sarcophagus grave)
+            {
+                if (grave.Corpse != null) return false;
+                return target.Cell.GetTerrain(target.Map).IsWater;
+            }
+            
+            return false;
         }
     }
 }

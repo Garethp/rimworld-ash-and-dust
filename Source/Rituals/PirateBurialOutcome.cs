@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AshAndDust.Buildings;
 using RimWorld;
 using Verse;
 
@@ -38,8 +39,15 @@ namespace AshAndDust.Rituals
                 hediff.Severity = effect;
                 pawn.health.AddHediff(hediff);
             }
-            
-            grave.Destroy();
+
+            if (grave is ShuttleCasket shuttle)
+            {
+                shuttle.Yeet();
+            }
+            else
+            {
+                grave.Destroy();
+            }
         }
     }
 }
