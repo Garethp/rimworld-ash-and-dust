@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+        <modNameReadable>From Ashes to Ashes, Dust to Dust</modNameReadable>
+        <modIdentifier>AshAndDust</modIdentifier>
+    </HugsLib.UpdateFeatureDef>
+
+    <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+        <defName>ModName_1_1_0</defName>
+        <assemblyVersion>1.1.0</assemblyVersion>
+        <content>
+- Update Watery Casket texture to actually fit bodies in without having to break bones
+- Pirates will now be drunk at the end of the funeral - no more sober Pirate Parties
+- If you have the Pirate Meme from Vanilla Faction Expanded Pirates, the Pirate Funeral precept will now be required
+        </content>
+    </HugsLib.UpdateFeatureDef>
+</Defs>

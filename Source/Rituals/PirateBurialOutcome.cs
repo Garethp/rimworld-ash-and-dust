@@ -26,6 +26,18 @@ namespace AshAndDust.Rituals
                 grave.Corpse.InnerPawn.ideo = null;
                 grave.Corpse.Destroy();
             }
+
+            
+            foreach (var pawn in jobRitual.PawnsToCountTowardsPresence)
+            {
+                var hediff = HediffMaker.MakeHediff(HediffDefOf.AlcoholHigh, pawn);
+                var effect = .3f;
+                effect /= pawn.BodySize;
+                
+                AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, ChemicalDefOf.Alcohol, ref effect);
+                hediff.Severity = effect;
+                pawn.health.AddHediff(hediff);
+            }
             
             grave.Destroy();
         }
