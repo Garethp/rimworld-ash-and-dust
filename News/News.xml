@@ -14,4 +14,13 @@
 - If you have the Pirate Meme from Vanilla Faction Expanded Pirates, the Pirate Funeral precept will now be required
         </content>
     </HugsLib.UpdateFeatureDef>
+
+    <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+        <defName>ModName_1_2_0</defName>
+        <assemblyVersion>1.2.0</assemblyVersion>
+        <content>
+- If you have SoS2 enabled, added a Shuttle Casket (a cheaper personal casket) that you can use for Pirate Burials, since there's no water in space
+- Fixed a rare tick exception when pirates drink too much at a funeral
+        </content>
+    </HugsLib.UpdateFeatureDef>
 </Defs>

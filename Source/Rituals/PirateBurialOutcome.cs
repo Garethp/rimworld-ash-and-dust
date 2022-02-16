@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AshAndDust.Buildings;
 using RimWorld;
 using Verse;
@@ -21,15 +22,14 @@ namespace AshAndDust.Rituals
             
             var target = jobRitual.selectedTarget;
             var grave = (Building_Grave) target.Thing;
-
+            
             if (grave.Corpse != null)
             {
                 grave.Corpse.InnerPawn.ideo = null;
                 grave.Corpse.Destroy();
             }
-
             
-            foreach (var pawn in jobRitual.PawnsToCountTowardsPresence)
+            foreach (var pawn in jobRitual.PawnsToCountTowardsPresence.ToList())
             {
                 var hediff = HediffMaker.MakeHediff(HediffDefOf.AlcoholHigh, pawn);
                 var effect = .3f;
@@ -40,13 +40,13 @@ namespace AshAndDust.Rituals
                 pawn.health.AddHediff(hediff);
             }
 
-            if (grave is ShuttleCasket shuttle)
+            if (target.Thing is ShuttleCasket shuttle)
             {
                 shuttle.Yeet();
             }
             else
             {
-                grave.Destroy();
+                target.Thing.Destroy();
             }
         }
     }

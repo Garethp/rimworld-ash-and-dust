@@ -9,6 +9,9 @@ namespace AshAndDust.Buildings
         {
             var newThing = SkyfallerMaker.MakeSkyfaller(DefDatabase<ThingDef>.GetNamed("ShuttleCasketSkyfaller"));
             GenSpawn.Spawn(newThing, Position, Map);
+
+            var fuel = GetComp<CompRefuelable>().Fuel;
+            this.GetComp<CompRefuelable>().ConsumeFuel(fuel);
             
             Destroy();
         }

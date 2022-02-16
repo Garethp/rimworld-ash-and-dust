@@ -21,6 +21,7 @@
         <constructionSkillPrerequisite>0</constructionSkillPrerequisite>
         <building>
             <hasFuelingPort>true</hasFuelingPort>
+            <haulToContainerDuration>500</haulToContainerDuration>
             <fixedStorageSettings>
                 <filter>
                     <categories>

@@ -51,6 +51,10 @@ namespace AshAndDust.Rituals
 
         public int massBurialRadius;
 
+        public SpawnFlowersData()
+        {
+        }
+        
         public SpawnFlowersData(List<ThingDef> plantsToNotOverwrite, List<ThingDef> baseDecorativePlants, List<ThingDef> enemyDecorativePlants, List<ThingDef> rareRewardPlants, int plantSpawnRadius, int massBurialRadius)
         {
             this.plantsToNotOverwrite = plantsToNotOverwrite;
