@@ -40,7 +40,7 @@
         <displayOrderInImpact>100</displayOrderInImpact>
         <defaultSelectionWeight>1</defaultSelectionWeight>
         <label>None</label>
-        <description>No pirate burial</description>
+        <description>When someone  dies, we don't send their bodies to the bottom of the oceans</description>
         <exclusionTags>
             <li>NoPirateBurial</li>
         </exclusionTags>

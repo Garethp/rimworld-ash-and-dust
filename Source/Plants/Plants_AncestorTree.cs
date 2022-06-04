@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace AshAndDust.Plants
@@ -17,24 +14,24 @@ namespace AshAndDust.Plants
 
         public Plants_AncestorTree()
         {
-            this.innerContainer = (ThingOwner) new ThingOwner<Thing>(this, false);
+            innerContainer = new ThingOwner<Thing>(this, false);
         }
 
         public Corpse Corpse
         {
             get
             {
-                foreach (var thing in this.innerContainer)
+                foreach (var thing in innerContainer)
                 {
                     if (thing is Corpse corpse)
                         return corpse;
                 }
 
-                return (Corpse) null;
+                return null;
             }
         }
 
-        public Pawn Ancestor => this.Corpse.InnerPawn;
+        public Pawn Ancestor => Corpse.InnerPawn;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -43,25 +40,25 @@ namespace AshAndDust.Plants
                 contentsKnown = true;
         }
 
-        public ThingOwner GetDirectlyHeldThings() => this.innerContainer;
+        public ThingOwner GetDirectlyHeldThings() => innerContainer;
 
         public void GetChildHolders(List<IThingHolder> outChildren) =>
-            ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, (IList<Thing>) this.GetDirectlyHeldThings());
+            ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
 
-        public virtual bool Accepts(Thing thing) => this.innerContainer.CanAcceptAnyOf(thing);
+        public virtual bool Accepts(Thing thing) => innerContainer.CanAcceptAnyOf(thing);
 
         public virtual bool TryAcceptThing(Thing thing, bool allowSpecialEffects = true)
         {
-            if (!this.Accepts(thing) || thing is not Corpse corpse)
+            if (!Accepts(thing) || thing is not Corpse corpse)
                 return false;
             bool flag;
             if (thing.holdingOwner != null)
             {
-                thing.holdingOwner.TryTransferToContainer(thing, this.innerContainer, thing.stackCount);
+                thing.holdingOwner.TryTransferToContainer(thing, innerContainer, thing.stackCount);
                 flag = true;
             }
             else
-                flag = this.innerContainer.TryAdd(thing);
+                flag = innerContainer.TryAdd(thing);
 
             if (!flag)
                 return false;
@@ -76,7 +73,7 @@ namespace AshAndDust.Plants
         {
             get
             {
-                if (!this.contentsKnown) return "Tree of an Unknown Hero";
+                if (!contentsKnown) return "Tree of an Unknown Hero";
                 return "Tree of the beloved " + Ancestor.Name.ToStringShort;
             }
         }
@@ -127,8 +124,8 @@ namespace AshAndDust.Plants
 
         public override void ExposeData()
         {
-            Scribe_Deep.Look<ThingOwner>(ref this.innerContainer, "innerContainer", (object) this);
-            Scribe_Values.Look<bool>(ref this.contentsKnown, "contentsKnown");
+            Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
+            Scribe_Values.Look(ref contentsKnown, "contentsKnown");
 
             base.ExposeData();
         }
@@ -137,23 +134,23 @@ namespace AshAndDust.Plants
         {
             get
             {
-                ThingStyleDef styleDef = this.StyleDef;
+                ThingStyleDef styleDef = StyleDef;
                 if (styleDef == null || styleDef.Graphic == null)
-                    return this.DefaultGraphic;
-                if (this.styleGraphicInt == null)
+                    return DefaultGraphic;
+                if (styleGraphicInt == null)
                 {
-                    this.styleGraphicInt = styleDef.graphicData == null
+                    styleGraphicInt = styleDef.graphicData == null
                         ? styleDef.Graphic
                         : styleDef.graphicData.GraphicColoredFor(this);
 
-                    if (this.styleGraphicInt.MatSingle.shader != ShaderDatabase.CutoutPlant)
+                    if (styleGraphicInt.MatSingle.shader != ShaderDatabase.CutoutPlant)
                     {
-                        this.styleGraphicInt.MatSingle.shader = ShaderDatabase.CutoutPlant;
-                        WindManager.Notify_PlantMaterialCreated(this.styleGraphicInt.MatSingle);
+                        styleGraphicInt.MatSingle.shader = ShaderDatabase.CutoutPlant;
+                        WindManager.Notify_PlantMaterialCreated(styleGraphicInt.MatSingle);
                     }
                 }
 
-                return this.styleGraphicInt;
+                return styleGraphicInt;
             }
         }
     }

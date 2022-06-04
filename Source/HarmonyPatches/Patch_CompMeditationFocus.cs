@@ -1,6 +1,6 @@
-﻿using HarmonyLib;
+﻿using AshAndDust.Comps;
+using HarmonyLib;
 using RimWorld;
-using RimWorld.Planet;
 using Verse;
 
 namespace AshAndDust.HarmonyPatches
@@ -16,6 +16,12 @@ namespace AshAndDust.HarmonyPatches
                 return false;
             }
 
+            if (__instance.parent.GetComp<MeditationSideEffectComp>() is IManualMeditationCanFocus focus)
+            {
+                __result = focus.CanUse(pawn);
+                return false;
+            }
+            
             return true;
         }
     }

@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
     <ThingDef ParentName="TreeBase" Name="AshAndDust_Plants_AncestorTree">
         <defName>AshAndDust_Plants_AncestorTree</defName>
         <label>ancestor tree</label>

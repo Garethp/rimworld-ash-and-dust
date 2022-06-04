@@ -12,6 +12,12 @@ namespace AshAndDust.HarmonyPatches
             if (__result.Accepted) return;
             if (precept.issue.defName == "Ritual") return;
             if (__result.Reason != "") return;
+
+            if (precept.exclusionTags.Contains("VanillaBurial") && precept.exclusionTags.Contains("NoVanillaCannibal"))
+            {
+                __result = new AcceptanceReport("Must remove Funeral ritual and add Cannibal precept before changing");
+                return;
+            }
             
             if (precept.exclusionTags.Contains("VanillaBurial"))
             {

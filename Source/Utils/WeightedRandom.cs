@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Verse;
 
 namespace AshAndDust.Utils
 {
@@ -36,7 +35,7 @@ namespace AshAndDust.Utils
 
         public T GetRandom()
         {
-            double numericValue = r.NextDouble() * RatioSum;
+            var numericValue = r.NextDouble() * RatioSum;
 
             foreach (var parameter in Parameters)
             {

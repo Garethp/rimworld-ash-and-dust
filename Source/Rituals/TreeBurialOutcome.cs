@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AshAndDust.Buildings;
 using AshAndDust.Plants;
 using AshAndDust.Utils;
@@ -52,9 +51,8 @@ namespace AshAndDust.Rituals
 
         public override void Apply(float progress, Dictionary<Pawn, int> totalPresence, LordJob_Ritual jobRitual)
         {
-            var quality = this.GetQuality(jobRitual, progress);
-            var outcome = this.GetOutcome(quality, jobRitual);
-
+            base.Apply(progress, totalPresence, jobRitual);
+            
             var target = jobRitual.selectedTarget;
             var grave = (Building_TreeGrave) target.Thing;
 
@@ -62,25 +60,37 @@ namespace AshAndDust.Rituals
             var position = grave.Position;
 
 
-            var props = (SpawnFlowersData) this.compDatas.Find(data => data is SpawnFlowersData);
+            var props = (SpawnFlowersData) compDatas.Find(data => data is SpawnFlowersData);
             if (props == null)
             {
                 return;
             }
 
+            var defaults = new CompProperties_SpawnFlowersDefaults();
+
             var massBurialRadius = props.massBurialRadius;
             var maxRadius = props.plantSpawnRadius;
-            var plantsNotToOverwrite = props.plantsToNotOverwrite;
+            var plantsNotToOverwrite = props.plantsToNotOverwrite ?? defaults.plantsToNotOverwrite;
 
             // 66% chance of this occuring
-            var decorationPlants = props.baseDecorativePlants;
+            var decorationPlants = props.baseDecorativePlants ?? defaults.baseDecorativePlants;
 
             // 30% chance of this occuring
-            var enemyDecorationPlants = props.enemyDecorativePlants;
+            var enemyDecorationPlants = props.enemyDecorativePlants ?? defaults.enemyDecorativePlants;
 
             // 4% chance of this occuring
-            var rewardPlants = props.rareRewardPlants;
+            var rewardPlants = defaults.rareRewardPlants;
 
+            if (massBurialRadius == 0)
+            {
+                massBurialRadius = CompProperties_SpawnFlowersDefaults.massBurialRadius;
+            }
+
+            if (maxRadius == 0)
+            {
+                maxRadius = CompProperties_SpawnFlowersDefaults.plantSpawnRadius;
+            }
+            
             if (grave.Corpse.InnerPawn.Faction == Faction.OfPlayer)
             {
                 var weightedPlants =
@@ -128,7 +138,7 @@ namespace AshAndDust.Rituals
                     .GetThingList(map)
                     .FindAll(thing => thing is Building_TreeGrave {HasCorpse: true} grave
                                       && grave.Corpse.InnerPawn?.RaceProps?.Humanlike == true
-                                      && grave.Corpse.Faction != Faction.OfPlayer
+                                      && grave.Corpse.InnerPawn.Faction != Faction.OfPlayer
                     )
                     .ForEach(grave =>
                         graves.AddDistinct((Building_TreeGrave) grave)
@@ -142,7 +152,7 @@ namespace AshAndDust.Rituals
             List<ThingDef> plantsToNotOverwrite,
             int maxRadius, bool canSpawnOverPlayerSownPlants, bool includeTargetSpot = false, bool force = false)
         {
-            int num = GenRadial.NumCellsInRadius(maxRadius);
+            var num = GenRadial.NumCellsInRadius(maxRadius);
             if (includeTargetSpot)
                 DoGrowPlantAt(map, plants, plantsToNotOverwrite, canSpawnOverPlayerSownPlants, position, position);
 
@@ -162,7 +172,7 @@ namespace AshAndDust.Rituals
             {
                 bool flag = false;
                 List<Thing> thingList = intVec3.GetThingList(map);
-                foreach (Thing thing in thingList)
+                foreach (var thing in thingList)
                 {
                     if (plants.AllPlants.Contains(thing.def))
                     {
@@ -170,7 +180,7 @@ namespace AshAndDust.Rituals
                         break;
                     }
 
-                    if (!plantsToNotOverwrite.NullOrEmpty<ThingDef>())
+                    if (!plantsToNotOverwrite.NullOrEmpty())
                     {
                         for (int index2 = 0; index2 < plantsToNotOverwrite.Count; ++index2)
                         {

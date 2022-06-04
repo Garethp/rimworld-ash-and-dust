@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using AshAndDust.Comps;
+using AshAndDust.Precepts;
 using HarmonyLib;
+using JetBrains.Annotations;
 using RimWorld;
 using Verse;
 
@@ -18,19 +20,12 @@ namespace AshAndDust.HarmonyPatches
             var ideos = Faction.OfPlayer.ideos.AllIdeos.ToList();
             foreach (var ideo in ideos)
             {
-                var preceptFound = false;
                 foreach (var precept in ideo.PreceptsListForReading)
                 {
-                    if (precept.def == Defs.TreeBurial_Required || precept.def == Defs.TreeBurial_WhenPossible)
+                    if (Patch_Corpse_PostCorpseDestroy.TryGetPreceptComp<BurialForNonMembers>(precept) is not null)
                     {
-                        preceptFound = true;
-                        break;
+                        ideo.Notify_MemberDied(pawn);
                     }
-                }
-
-                if (preceptFound)
-                {
-                    ideo.Notify_MemberDied(pawn);
                 }
             }
         }
@@ -55,23 +50,57 @@ namespace AshAndDust.HarmonyPatches
             {
                 if (mapPawn.Ideo == null) return;
 
-                var precept = mapPawn.Ideo.GetPrecept(Defs.TreeBurial_Required);
-                if (mapPawn.Faction != deadPawn.Faction && precept != null)
+                mapPawn.Ideo.PreceptsListForReading.ForEach(precept =>
                 {
-                    mapPawn.needs?.mood?.thoughts.memories.TryGainMemory(Defs.TreeBurial_EnemyCorpseDestroyed, deadPawn,
-                        precept);
-                }
+                    if (mapPawn.Faction != deadPawn.Faction)
+                    {
+                        TryGetPreceptComp<INotify_NonMemberCorpseDestroyed>(precept)?.Notify_NonMemberCorpseDestroyed(mapPawn, deadPawn, precept);
+                    }
 
-                precept ??= mapPawn.Ideo.GetPrecept(Defs.TreeBurial_WhenPossible) ??
-                            mapPawn.Ideo.GetPrecept(Defs.TreeBurial_Colonists);
-                if (mapPawn.Faction == deadPawn.Faction && precept != null)
-                {
-                    mapPawn.needs?.mood?.thoughts.memories.TryGainMemory(Defs.TreeBurial_ColonistCorpseDestroyed,
-                        deadPawn, precept);
-                }
+                    LegacyMemberCorpseDestroyed(mapPawn, deadPawn, precept);
+
+                    if (mapPawn.Faction == deadPawn.Faction)
+                    {
+                        TryGetPreceptComp<INotify_MemberCorpseDestroyed>(precept)?.Notify_MemberCorpseDestroyed(mapPawn, deadPawn, precept);
+                    }
+
+                    LegacyNonMemberCorpseDestroyed(mapPawn, deadPawn, precept);
+                });
             });
-
+            
             return true;
+        }
+
+        private static void LegacyMemberCorpseDestroyed(Pawn believer, Pawn deadPerson, Precept precept)
+        {
+            if (TryGetPreceptComp<INotify_MemberCorpseDestroyed>(precept) is not null) return;
+            if (precept.def.defName is not "TreeBurial_Colonists" 
+                or "TreeBurial_WhenPossible"
+                or "TreeBurial_Required") return;
+            
+            new TreeBurial().Notify_MemberCorpseDestroyed(believer, deadPerson, precept);
+        }
+        
+        private static void LegacyNonMemberCorpseDestroyed(Pawn believer, Pawn deadPerson, Precept precept)
+        {
+            if (TryGetPreceptComp<INotify_NonMemberCorpseDestroyed>(precept) is not null) return;
+            if (precept.def.defName is not "TreeBurial_Required") return;
+            
+            new TreeBurial_Required().Notify_NonMemberCorpseDestroyed(believer, deadPerson, precept);
+        }
+        
+        [CanBeNull]
+        public static T TryGetPreceptComp<T>(Precept precept)
+        {
+            if (precept.def.comps == null) return default (T);
+
+            foreach (var c in precept.def.comps)
+            {
+                if (c is T comp)
+                    return comp;
+            }
+
+            return default (T);
         }
     }
 }

@@ -16,5 +16,10 @@ namespace AshAndDust
         
         public static ThoughtDef TreeBurial_EnemyCorpseDestroyed;
         public static ThoughtDef TreeBurial_ColonistCorpseDestroyed;
+        
+        public static PreceptDef HeroFuneral;
+        public static HediffDef AshAndDust_ProtectedByHero;
+
+        public static JobDef EatAtCannibalFuneral;
     }
 }

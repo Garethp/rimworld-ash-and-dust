@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Patch>
+    <!-- Let's add our conflicting memes to the base Funeral -->
     <Operation Class="PatchOperationSequence">
         <success>Always</success>
         <operations>
@@ -21,9 +22,11 @@
         <value>
             <li>TreeConnection</li>
             <li>NaturePrimacy</li>
+            <li>Cannibal</li>
         </value>
     </Operation>
 
+    <!-- We add our exclusion tags to the base funeral -->
     <Operation Class="PatchOperationSequence">
         <success>Always</success>
         <operations>
@@ -46,7 +49,32 @@
             <li>VanillaBurial</li>
         </value>
     </Operation>
+
+    <!-- We add exclusion tags to no cannibalism so that only people who prefer it or more will have cannibal funerals -->
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>Defs/PreceptDef[defName = "Cannibalism_Abhorrent" or defName = "Cannibalism_Horrible" or defName = "Cannibalism_Disapproved"]/exclusionTags</xpath>
+                <success>Invert</success>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/PreceptDef[defName = "Cannibalism_Abhorrent" or defName = "Cannibalism_Horrible" or defName = "Cannibalism_Disapproved"]</xpath>
+                <value>
+                    <exclusionTags />
+                </value>
+            </li>
+        </operations>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PreceptDef[defName = "Cannibalism_Abhorrent" or defName = "Cannibalism_Horrible" or defName = "Cannibalism_Disapproved"]/exclusionTags</xpath>
+        <value>
+            <li>NoVanillaCannibal</li>
+        </value>
+    </Operation>
     
+    <!-- We make it so that only nature primacy can have Tree Graves -->
     <Operation Class="PatchOperationSequence">
         <success>Always</success>
         <operations>

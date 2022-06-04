@@ -94,7 +94,7 @@
                 </roleBehaviors>
             </li>
             <li>
-                <defaultDuty>Party</defaultDuty>
+                <defaultDuty>EatAtCannibalFuneral</defaultDuty>
                 <endTriggers>
                     <li Class="StageEndTrigger_DurationPercentage">
                         <percentage>0.7</percentage>

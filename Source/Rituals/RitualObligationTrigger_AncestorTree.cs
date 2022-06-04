@@ -9,7 +9,7 @@ namespace AshAndDust.Rituals
         {
             if (!pawn.Faction.IsPlayer && !pawn.Corpse.Map.ParentFaction.IsPlayer) return;
             
-            this.ritual.AddObligation(new RitualObligation(this.ritual, (TargetInfo) (Thing) pawn.Corpse)
+            ritual.AddObligation(new RitualObligation(ritual, (TargetInfo) (Thing) pawn.Corpse)
             {
                 showAlert = !pawn.IsSlave,
                 causeDelayThought = !pawn.IsSlave

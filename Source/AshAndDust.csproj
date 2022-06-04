@@ -37,7 +37,7 @@
           <HintPath>..\packages\Lib.Harmony.2.1.0\lib\net472\0Harmony.dll</HintPath>
           <Private>False</Private>
         </Reference>
-        <Reference Include="Assembly-CSharp, Version=1.3.8005.21796, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="Assembly-CSharp, Version=1.3.8131.16884, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
           <Private>False</Private>
         </Reference>
@@ -54,18 +54,36 @@
         <Compile Include="AshAndDust.cs" />
         <Compile Include="Buildings\Building_TreeGrave.cs" />
         <Compile Include="Buildings\ShuttleCasket.cs" />
+        <Compile Include="Cannibal\Buildings\CannibalFeast.cs" />
+        <Compile Include="Cannibal\Jobs\EatAtFuneralDriver.cs" />
+        <Compile Include="Cannibal\Jobs\EatAtFuneralGiver.cs" />
+        <Compile Include="Cannibal\Rituals\CannibalBurialOutcome.cs" />
+        <Compile Include="Cannibal\Rituals\RitualObligationTrigger_CannibalFeast.cs" />
+        <Compile Include="Cannibal\Rituals\RitualObligationTrigger_CannibalFeastProperties.cs" />
+        <Compile Include="Cannibal\Rituals\RitualTargetFilter_CannibalFeast.cs" />
+        <Compile Include="Comps\BurialForNonMembers.cs" />
+        <Compile Include="Comps\MeditationSideEffectComp.cs" />
+        <Compile Include="Comps\ThoughtOnMemberCorpseDestroyed.cs" />
+        <Compile Include="Comps\ThoughtOnNonMemberCorpseDestroyed.cs" />
         <Compile Include="Defs.cs" />
         <Compile Include="HarmonyPatches\PatchJobDriver_Meditate.cs" />
+        <Compile Include="HarmonyPatches\Patch_BuildingsRequirePrecepts.cs" />
         <Compile Include="HarmonyPatches\Patch_CompMeditationFocus.cs" />
         <Compile Include="HarmonyPatches\Patch_IdeoFoundation.cs" />
         <Compile Include="HarmonyPatches\Patch_IdeoManager.cs" />
+        <Compile Include="Heroic\Comps\CompHeroicTomb.cs" />
+        <Compile Include="Heroic\Comps\CompHeroicTomb_Properties.cs" />
+        <Compile Include="Heroic\Rituals\HeroicBurialOutcome.cs" />
+        <Compile Include="Heroic\Rituals\RitualTargetFilter_HeroBurial.cs" />
+        <Compile Include="Heroic\Rituals\RitualTargetFilter_HeroBurialDef.cs" />
+        <Compile Include="Heroic\Rituals\RitualTargetFilter_HeroBurialNoCorpse.cs" />
         <Compile Include="IManualMeditationCanFocus.cs" />
         <Compile Include="IMeditationSideEffect.cs" />
         <Compile Include="Plants\CompGiveThoughtToRelationsOnDestroy.cs" />
         <Compile Include="Plants\CompProperties_GiveThoughtToRelationsOnDestroy.cs" />
         <Compile Include="Plants\Plants_AncestorTree.cs" />
+        <Compile Include="Precepts\INotify_MemberCorpseDestroyed.cs" />
         <Compile Include="Precepts\INotify_NonMemberCorpseDestroyed.cs" />
-        <Compile Include="Precepts\INotify_NonMemberDied.cs" />
         <Compile Include="Precepts\TreeBurial.cs" />
         <Compile Include="Precepts\TreeBurial_Required.cs" />
         <Compile Include="Precepts\TreeBurial_WhenPossible.cs" />
@@ -75,11 +93,16 @@
         <Compile Include="Rituals\RitualObligationTrigger_AncestorTree.cs" />
         <Compile Include="Rituals\RitualObligationTrigger_AncestorTreeProperties.cs" />
         <Compile Include="Rituals\CompProperties_SpawnFlowers.cs" />
-        <Compile Include="Rituals\RitualTargetFilter_HeroBurial.cs" />
         <Compile Include="Rituals\RitualTargetFilter_WateryGraveWithCorpse.cs" />
         <Compile Include="Rituals\RitualTargetFilter_WateryGraveWithNoCorpse.cs" />
         <Compile Include="Rituals\TreeBurialOutcome.cs" />
+        <Compile Include="RoomRequirements\ThingCountOfValue.cs" />
+        <Compile Include="Utils\CompRequiresPrecept.cs" />
+        <Compile Include="Utils\CompRequiresPrecept_Properties.cs" />
         <Compile Include="Utils\WeightedRandom.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Thoughts.xml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

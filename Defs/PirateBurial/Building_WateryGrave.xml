@@ -87,6 +87,11 @@
                 <drawAssignmentOverlay>false</drawAssignmentOverlay>
                 <compClass>CompAssignableToPawn_Grave</compClass>
             </li>
+            <li Class="AshAndDust.Utils.CompRequiresPrecept_Properties">
+                <OneOf>
+                    <li>PirateFuneral</li>
+                </OneOf>
+            </li>
         </comps>
         <costStuffCount>30</costStuffCount>
         <altitudeLayer>Building</altitudeLayer>
