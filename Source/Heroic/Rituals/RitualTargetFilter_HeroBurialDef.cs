@@ -20,7 +20,6 @@ namespace AshAndDust.Heroic.Rituals
         public List<RoomRequirement> GetCurrentRequirement(Pawn pawn)
         {
             var currentRequirement = ExpectationsUtility.CurrentExpectationFor(pawn);
-            currentRequirement = ExpectationDefOf.SkyHigh;
             
             var requirements =  tombRequirements.Find(tombRequirement => tombRequirement.expectation == currentRequirement) ??
                    tombRequirements[0];
