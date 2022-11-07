@@ -47,7 +47,7 @@ namespace AshAndDust.Heroic.Rituals
                 yield return "A tomb that meets the required expectations";
                 yield break;
             }
-            var pawn = ((Corpse) obligation.targetA.Thing).InnerPawn;
+            var pawn = obligation.targetA.Thing is Pawn ? (Pawn) obligation.targetA.Thing : ((Corpse) obligation.targetA.Thing).InnerPawn;
             foreach (var roomRequirement in Props.GetCurrentRequirement(pawn))
             {
                 yield return roomRequirement.LabelCap();

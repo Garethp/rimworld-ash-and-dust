@@ -25,6 +25,7 @@ namespace AshAndDust.Rituals
             
             if (grave.Corpse != null)
             {
+                if (PawnUtility.IsFactionLeader(grave.Corpse.InnerPawn) && grave.Corpse.InnerPawn.Faction == Faction.OfPlayer) grave.Corpse.InnerPawn.Faction.leader = null;
                 grave.Corpse.InnerPawn.ideo = null;
                 grave.Corpse.Destroy();
             }

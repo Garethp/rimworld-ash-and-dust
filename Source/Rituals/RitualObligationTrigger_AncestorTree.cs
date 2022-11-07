@@ -11,8 +11,7 @@ namespace AshAndDust.Rituals
             
             ritual.AddObligation(new RitualObligation(ritual, (TargetInfo) (Thing) pawn.Corpse)
             {
-                showAlert = !pawn.IsSlave,
-                causeDelayThought = !pawn.IsSlave
+                sendLetter = !pawn.IsSlave
             });
         }
     }

@@ -20,13 +20,13 @@ namespace AshAndDust.Rituals
             
             if (target.Thing is ShuttleCasket shuttleCasket)
             {
-                if (shuttleCasket.Corpse != obligation.targetA.Thing) return false;
+                if (!(shuttleCasket.Corpse == obligation.targetA.Thing || shuttleCasket.Corpse?.InnerPawn == obligation.targetA.Thing)) return false;
                 return shuttleCasket.GetComp<CompRefuelable>().IsFull;
             }
             
             if (target.Thing is Building_Sarcophagus grave)
             {
-                if (grave.Corpse != obligation.targetA.Thing) return false;
+                if (!(grave.Corpse == obligation.targetA.Thing || grave.Corpse?.InnerPawn == obligation.targetA.Thing)) return false;
                 return target.Cell.GetTerrain(target.Map).IsWater;
             }
 

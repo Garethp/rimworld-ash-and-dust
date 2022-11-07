@@ -84,6 +84,8 @@ namespace AshAndDust.Cannibal.Rituals
                 skillsToLearn.ForEach(toLearn => { pawn.skills.Learn(toLearn.Item1, toLearn.Item2); });
             }
 
+            var deadPawn = grave.Corpse.InnerPawn;
+            if (PawnUtility.IsFactionLeader(deadPawn)) deadPawn.Faction.leader = null;
             grave.Corpse.InnerPawn.ideo = null;
             grave.Corpse.Destroy();
         }

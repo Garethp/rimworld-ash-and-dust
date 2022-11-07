@@ -19,7 +19,6 @@
         <ritualExpectedDesc>Once a {IDEO} member dies, other {MEMBERS} gather around their growing site for
             {RITUAL_labelDef}.
         </ritualExpectedDesc>
-        <ritualExpectedPostfix>{0} {1} want to carry out the regrowth before they decompose.</ritualExpectedPostfix>
         <ritualObligationTriggers>
             <li Class="AshAndDust.Rituals.RitualObligationTrigger_AncestorTreeProperties">
                 <mustBePlayerIdeo>false</mustBePlayerIdeo>

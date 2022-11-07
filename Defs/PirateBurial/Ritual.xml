@@ -27,7 +27,6 @@
         <defName>PirateFuneral</defName>
         <nameMaker>NamerRitualFuneral</nameMaker>
         <ritualExpectedDesc>Once a {IDEO} member dies, other {MEMBERS} gather around their watery grave for {RITUAL_labelDef}.</ritualExpectedDesc>
-        <ritualExpectedPostfix>{0} {1} want to carry out the funeral as soon as possible.</ritualExpectedPostfix>
         <ritualObligationTriggers>
             <li Class="RitualObligationTrigger_MemberDiedProperties">
                 <mustBePlayerIdeo>true</mustBePlayerIdeo>
@@ -94,7 +93,7 @@
                 </roleBehaviors>
             </li>
             <li>
-                <defaultDuty>EatAtCannibalFuneral</defaultDuty>
+                <defaultDuty>Party</defaultDuty>
                 <endTriggers>
                     <li Class="StageEndTrigger_DurationPercentage">
                         <percentage>0.7</percentage>

@@ -16,7 +16,7 @@ namespace AshAndDust.Rituals
         
         protected override RitualTargetUseReport CanUseTargetInternal(TargetInfo target, RitualObligation obligation)
         {
-            return target.HasThing && target.Thing is Building_TreeGrave thing && thing.Corpse == obligation.targetA.Thing;
+            return target.HasThing && target.Thing is Building_TreeGrave thing && (thing.Corpse == obligation.targetA.Thing || thing.Corpse?.InnerPawn == obligation.targetA.Thing);
         }
     }
 }
