@@ -49,12 +49,20 @@
             - Fixing bugs caused by the latest Rimworld update
         </content>
     </HugsLib.UpdateFeatureDef>
-    
-        <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+
+    <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
         <defName>Ashes_To_Ashes_1_3_3</defName>
         <assemblyVersion>1.3.3</assemblyVersion>
         <content>
             - Update for Rimworld 1.4
+        </content>
+    </HugsLib.UpdateFeatureDef>
+    
+    <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+        <defName>Ashes_To_Ashes_1_4_0</defName>
+        <assemblyVersion>1.4.0</assemblyVersion>
+        <content>
+            - Allow Cannibals to have Cannibal Funerals for colonists who followed a different Ideoligion
         </content>
     </HugsLib.UpdateFeatureDef>
 </Defs>

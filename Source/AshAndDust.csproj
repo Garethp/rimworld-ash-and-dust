@@ -16,7 +16,7 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
-        <DebugType>none</DebugType>
+        <DebugType>portable</DebugType>
         <Optimize>false</Optimize>
         <OutputPath>../Assemblies</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -62,6 +62,7 @@
         <Compile Include="Cannibal\Rituals\RitualObligationTrigger_CannibalFeastProperties.cs" />
         <Compile Include="Cannibal\Rituals\RitualTargetFilter_CannibalFeast.cs" />
         <Compile Include="Comps\BurialForNonMembers.cs" />
+        <Compile Include="Comps\CrossIdeoBurial.cs" />
         <Compile Include="Comps\MeditationSideEffectComp.cs" />
         <Compile Include="Comps\ThoughtOnMemberCorpseDestroyed.cs" />
         <Compile Include="Comps\ThoughtOnNonMemberCorpseDestroyed.cs" />
