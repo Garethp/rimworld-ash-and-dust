@@ -36,7 +36,7 @@ namespace AshAndDust.Rituals
                 var effect = .3f;
                 effect /= pawn.BodySize;
                 
-                AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, ChemicalDefOf.Alcohol, ref effect);
+                AddictionUtility.ModifyChemicalEffectForToleranceAndBodySize(pawn, ChemicalDefOf.Alcohol, ref effect, applyGeneToleranceFactor: true);
                 hediff.Severity = effect;
                 pawn.health.AddHediff(hediff);
             }

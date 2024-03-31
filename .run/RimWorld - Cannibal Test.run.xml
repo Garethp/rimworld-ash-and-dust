@@ -1,0 +1,11 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RimWorld - Cannibal Test" type="RimworldRunConfiguration" factoryName="RimworldRunConfiguration">
+    <option name="commandLineOptions" value="" />
+    <option name="modListPath" value="$PROJECT_DIR$/Fixtures/Modlist.xml" />
+    <option name="saveFilePath" value="$PROJECT_DIR$/Fixtures/Cannibal.rws" />
+    <option name="scriptName" value="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64.exe" />
+    <method v="2">
+      <option name="Build" default="false" projectName="AshAndDust" projectPath="$PROJECT_DIR$/Source/AshAndDust.csproj" />
+    </method>
+  </configuration>
+</component>

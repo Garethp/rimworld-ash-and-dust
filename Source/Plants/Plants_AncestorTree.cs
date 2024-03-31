@@ -10,7 +10,7 @@ namespace AshAndDust.Plants
 
         private bool contentsKnown;
 
-        private Graphic styleGraphicInt;
+        private new Graphic styleGraphicInt;
 
         public Plants_AncestorTree()
         {
