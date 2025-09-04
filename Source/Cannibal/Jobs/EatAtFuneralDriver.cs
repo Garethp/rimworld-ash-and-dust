@@ -23,10 +23,10 @@ namespace AshAndDust.Cannibal.Jobs
       // var totalBuildingNutrition = f.TargetA.Thing.def.CostList.Sum(x => x.thingDef.GetStatValueAbstract(StatDefOf.Nutrition) * x.count);
       var eat = new Toil
       {
-        tickAction = () =>
+        tickIntervalAction = (delta) =>
         {
           pawn.rotationTracker.FaceCell(TargetA.Thing.OccupiedRect().ClosestCellTo(pawn.Position));
-          pawn.GainComfortFromCellIfPossible();
+          pawn.GainComfortFromCellIfPossible(delta);
           // if (pawn.needs.food != null)
           //   pawn.needs.food.CurLevel += totalBuildingNutrition / pawn.GetLord().ownedPawns.Count / eat.defaultDuration;
           if (!pawn.IsHashIntervalTick(40) || Rand.Value >= 0.25)
